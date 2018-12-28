@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.all.js"></script>
+
         <title> Global Pix </title>
         <meta charset="utf-8">
         <style>
@@ -24,35 +28,30 @@
         <h1 id="header" style="" align="center"> Global Pix </h3>
         <div id="container1"></div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.all.js"></script>
-
 
         <script>
-         const element = document.getElementById('container1');
-         // element.align = "center"
-         // render map
-         const map = new Datamap({
-             element,
-             fills: {
-                 defaultFill: '#ccc'
-             },
-             responsive: true,
-             projection: 'mercator', // big world map
-             aspectRatio: 1,
-             geographyConfig: {
-                 borderColor: '#DEDEDE',
-                 highlightFillColor: '#B7B7B7',
-                 highlightBorderColor: '#777',
-                 highlightBorderWidth: 0.3,
-                 borderWidth: 0.3
-             },
-             done: function(datamap) {
-                 datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-                     window.location = "http://new-website.com";
-                     alert(geography.properties.name);
-                 });
+            const element = document.getElementById('container1');
+            // element.align = "center"
+            // render map
+            const map = new Datamap({
+            element,
+            fills: {
+            defaultFill: '#ccc'
+            },
+            responsive: true,
+            projection: 'mercator', // big world map
+            aspectRatio: 1,
+            geographyConfig: {
+            borderColor: '#DEDEDE',
+            highlightFillColor: '#B7B7B7',
+            highlightBorderColor: '#777',
+            highlightBorderWidth: 1,
+            },
+            done: function(datamap) {
+                datamap.svg.selectAll('.datamaps-subunit').on('click', (geography) => {
+                    window.location = `file:///home/amfern/Documents/projects/worldMap/country.html#${geography.id}`;
+                    console.log(geography);
+                });
              },
          });
 
