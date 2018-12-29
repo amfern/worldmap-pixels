@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package country;
+
+service CountryPixelMapService {
+    rpc AddPixel (AddPixelRequest) returns (stream AddPixelResponse);
+}
+
+message AddPixelResponse {
+    bool ok = 1;
+}
+message AddPixelRequest {
+    int32 x = 1;
+    int32 y = 2;
+    string color = 3;
+    string countryCode = 4;
+}

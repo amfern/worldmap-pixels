@@ -1,0 +1,11 @@
+#pixelmap {
+    display: grid;
+    grid-template-columns: repeat(100,10px);
+    align-items: end;
+    grid-auto-rows: 10px;
+}
+
+#pixelmap .pixel {
+    align-self: stretch;
+    font-size: 0.2em;
+}
